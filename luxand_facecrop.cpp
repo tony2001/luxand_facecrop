@@ -24,7 +24,7 @@
 
 extern "C"{
 
-static function_entry luxand_facecrop_functions[] = {
+static zend_function_entry luxand_facecrop_functions[] = {
     PHP_FE(fcActivate, NULL)
     PHP_FE(fcGetHardwareID, NULL)
     PHP_FE(fcGetLicenseInfo, NULL)
