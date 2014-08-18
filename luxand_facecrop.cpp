@@ -88,7 +88,7 @@ PHP_MINFO_FUNCTION(luxand_facecrop)
 PHP_FUNCTION(fcActivate)
 {
 	char * key;
-	long keylen;
+	int keylen;
 	
 	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &key, &keylen) == FAILURE) {
 		RETURN_NULL();
@@ -147,9 +147,9 @@ PHP_FUNCTION(fcFreeContextID)
 static void php_luxand_face_crop(INTERNAL_FUNCTION_PARAMETERS, int only_return_coords)
 {
 	char * fname;
-	long fnamelen;
+	int fnamelen;
 	char * outfname;
-	long outfnamelen;
+	int outfnamelen;
 	long width, height; //desired_width, desired_height
 	long context_id;	
 
