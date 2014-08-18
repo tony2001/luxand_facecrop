@@ -2,7 +2,7 @@ PHP_ARG_WITH(luxand_facecrop, for luxand_facecrop support, [  --with-luxand_face
 
 if test "$PHP_LUXAND_FACECROP" != "no"; then
   PHP_REQUIRE_CXX
-  SEARCH_PATH="/usr/local /usr"
+  SEARCH_PATH="/local /usr/local /usr"
   SEARCH_FOR_H="include/LuxandFaceCrop.h"
   SEARCH_FOR_LIB="lib/libfacecrop"
 
@@ -27,7 +27,10 @@ if test "$PHP_LUXAND_FACECROP" != "no"; then
   PHP_ADD_INCLUDE($LUXAND_FACECROP_DIR/include)
 
   AC_LANG_PUSH(C++)
-  AC_CHECK_HEADER([LuxandFaceCrop.h], [], AC_MSG_ERROR('LuxandFaceCrop.h' header not found))
+  old_CPPFLAGS=$CPPFLAGS
+  CPPFLAGS="$CPPFLAGS -I$LUXAND_FACECROP_DIR/include"
+  AC_CHECK_HEADER([LuxandFaceCrop.h], [], AC_MSG_ERROR(['LuxandFaceCrop.h' header not found]))
+  CPPFLAGS=$old_CPPFLAGS
 
   PHP_ADD_LIBRARY_WITH_PATH(stdc++, "", LUXAND_FACECROP_SHARED_LIBADD)
 
